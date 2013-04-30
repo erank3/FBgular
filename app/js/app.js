@@ -6,6 +6,6 @@ angular.module('myApp', ['ngGrid','myApp.services']).
     config(['$routeProvider', function ($routeProvider) {
         $routeProvider.when('/login', {templateUrl: 'partials/login.html', controller: 'FBgular'});
         $routeProvider.when('/fbgular', {templateUrl: 'partials/mainView.html', controller: 'FBgular'});
-        $routeProvider.when('/analysis', {templateUrl: 'partials/analysis.html', controller: 'FBgular'});
+        $routeProvider.when('/analysis', {templateUrl: 'partials/analysis.html', controller: 'AnalysisCtrl'});
         $routeProvider.otherwise({redirectTo: '/login'});
     }]);

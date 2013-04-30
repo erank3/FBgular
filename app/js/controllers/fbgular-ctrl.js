@@ -54,7 +54,7 @@ angular.module('myApp').controller('FBgular', ['$scope', '$location', 'FBService
                 var item =
                 {
                     from: fbPost.from.name,
-                    story: fbPost.caption ? fbPost.caption : fbPost.story
+                    story: FBService.extractPostStory(fbPost)
                 }
                 gridData.push(item);
             });

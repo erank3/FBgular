@@ -11,13 +11,19 @@ angular.module('myApp.services', []).
 angular.module('myApp.services').service('FBService', function () {
 
     var _cachedFeed = [],
-        _cachedUserData;
-
+        _cachedUserData,
+        _loginRequestPending = false; //flag to avoid opening several login popup windows
 
     var login = function (success, error) {
 
+        if (_loginRequestPending)
+            return;
+
+        _loginRequestPending = true;
+
         FB.login(function (response) {
 
+            _loginRequestPending = false;
             if (response.authResponse) {
                 if (response.status === "connected") {
                     getUserData(success, error);
@@ -81,6 +87,22 @@ angular.module('myApp.services').service('FBService', function () {
 
         getCachedUserData: function () {
             return _cachedUserData;
+        },
+
+        extractPostStory: function (fbPost) {
+
+
+            var displayValue = fbPost.message;
+
+            if (angular.isDefined(displayValue))
+                return displayValue;
+
+            displayValue = fbPost.caption ? fbPost.caption : fbPost.story;
+
+            if (angular.isDefined(displayValue))
+                return displayValue;
+
+            return ""; //temp solution for posts that doesn't have user story...
         }
     };
 });
