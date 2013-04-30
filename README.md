@@ -112,7 +112,6 @@ fetch the changes and merge them into your project with git.
         filters.js      --> custom angular filters
         services.js     --> custom angular services
       lib/              --> angular and 3rd party javascript libraries
-        angular/
           angular.js        --> the latest angular js
           angular.min.js    --> the latest minified angular js
           angular-*.js      --> angular add-on modules
@@ -120,7 +119,7 @@ fetch the changes and merge them into your project with git.
       partials/             --> angular view partials (partial html templates)
         partial1.html
         partial2.html
-
+=======
     config/karma.conf.js        --> config file for running unit tests with Karma
     config/karma-e2e.conf.js    --> config file for running e2e tests with Karma
 
